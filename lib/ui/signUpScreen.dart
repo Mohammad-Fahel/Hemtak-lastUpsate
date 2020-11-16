@@ -53,7 +53,7 @@ class _SignUpVolunteerState extends State<SignUpVolunteer> {
           ])));
 }
 
-  Widget _buildWidgetTF(String nameOfWidget, IconData icon) {
+  Widget _buildWidgetTF(String nameOfWidget, IconData icon, bool state) {
     return Container(
       padding: EdgeInsetsDirectional.only(start: 10),
       alignment: AlignmentDirectional.center,
@@ -71,7 +71,7 @@ class _SignUpVolunteerState extends State<SignUpVolunteer> {
         width: 375,
         child: TextField(
           textAlign: TextAlign.right,
-            obscureText: true,
+            obscureText: state,
             decoration: InputDecoration(
               icon: Icon(icon, color: Colors.black38),
                 border: InputBorder.none,
@@ -239,21 +239,21 @@ class _SignUpVolunteerState extends State<SignUpVolunteer> {
                               width: 175,
                             ),
                             SizedBox(height: 60),
-                            _buildWidgetTF("الاسم الرباعي", Icons.person),
+                            _buildWidgetTF("الاسم الرباعي", Icons.person, false),
                             SizedBox(height: 10),
                             _buildWidgetTF(
-                                "الرقم الوطني", Icons.credit_card_rounded),
+                                "الرقم الوطني", Icons.credit_card_rounded, false),
                             SizedBox(height: 10),
-                            _buildWidgetTF("مكان الإقامة", Icons.location_on),
+                            _buildWidgetTF("مكان الإقامة", Icons.location_on , false),
                             SizedBox(height: 10),
                             _buildWidgetTF(
-                                "عنوان البريد الالكتروني", Icons.email),
+                                "عنوان البريد الالكتروني", Icons.email, false),
                             SizedBox(height: 10),
-                            _buildWidgetTF("رقم الجوال", Icons.phone),
+                            _buildWidgetTF("رقم الجوال", Icons.phone, false),
                             SizedBox(height: 10),
-                            _buildWidgetTF("كلمة المرور", Icons.vpn_key),
+                            _buildWidgetTF("كلمة المرور", Icons.vpn_key, true),
                             SizedBox(height: 10),
-                            _buildWidgetTF("تأكيد كلمة المرور", Icons.vpn_key),
+                            _buildWidgetTF("تأكيد كلمة المرور", Icons.vpn_key, true),
                             SizedBox(height: 10),
                             multipleChoice(),
                             SizedBox(height: 40),

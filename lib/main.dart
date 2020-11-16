@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
         supportedLocales: [
           Locale("ar", "AE"), // OR Locale('ar', 'AE') OR Other RTL locales
         ],
+        theme: ThemeData(
+          primaryColor: Colors.grey[300],
+        ),
         debugShowCheckedModeBanner: false,
         home: MyHomePage());
   }
@@ -52,17 +55,19 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 50),
               Image.asset(
                 "assets/images/hemtak.png",
                 height: 240,
                 width: 240,
                 alignment: AlignmentDirectional.center,
               ),
-              Text("نوّرت..",
-                  style: TextStyle(color: Colors.black, fontSize: 20)),
-              SizedBox(height: 100),
+              // SizedBox(height: 10),
+              // Text("نوّرت..",
+              //     style: TextStyle(color: Colors.black, fontSize: 40)),
+              SizedBox(height: 200),
               Image.asset("assets/images/loader.gif",
-                  alignment: AlignmentDirectional.bottomEnd,)
+                  alignment: AlignmentDirectional.bottomEnd)
             ],
           )
     );

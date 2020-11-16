@@ -195,14 +195,50 @@ class _SignInPartnerState extends State<SignInPartner> {
 
   Widget _forgotPasswordField() {
     return Container(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        width: 375,
-        alignment: Alignment.centerRight,
-        child: Text('هل نسيت كلمة المرور؟',
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: Colors.white)));
+      padding: EdgeInsets.symmetric(vertical: 10),
+      width: 375,
+      alignment: Alignment.centerRight,
+      child: TextButton(
+          child: Text(
+              'هل نسيت كلمة المرور؟',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white)
+          ),
+          onPressed: () => NAlertDialog(
+            title: Text(
+              "استعادة كلمة المرور",
+              textAlign: TextAlign.right,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            content: TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: new BorderSide(color: Colors.redAccent),
+
+                ),
+                hintText: "ادخل عنوان البريد الاكتروني",
+                labelText: 'عنوان البريد الاكتروني',
+                prefixIcon: const Icon(
+                  Icons.email,
+                  color: Colors.redAccent,
+                ),
+              ),),
+            actions: [
+              FlatButton(
+                onPressed: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => SignInPartner())),
+                child: Text("موافق", style: TextStyle(color: Colors.redAccent)),
+              ),
+
+            ],
+            blur: 2,
+          ).show(context)
+      ),
+    );
   }
 
   Widget _submitBtn() {
@@ -360,7 +396,7 @@ class _SignUpPartnerState extends State<SignUpPartner> {
             ])));
   }
 
-  Widget _buildWidgetTF(String nameOfWidget, IconData icon) {
+  Widget _buildWidgetTF(String nameOfWidget, IconData icon, bool state) {
     return Container(
       padding: EdgeInsetsDirectional.only(start: 10),
         decoration: BoxDecoration(
@@ -377,7 +413,7 @@ class _SignUpPartnerState extends State<SignUpPartner> {
         width: 375,
         child: TextField(
             textAlign: TextAlign.right,
-            obscureText: true,
+            obscureText: state,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               icon: Icon(icon, color: Colors.black38),
@@ -593,9 +629,9 @@ class _SignUpPartnerState extends State<SignUpPartner> {
                           width: 175,
                         ),
                         SizedBox(height: 30),
-                        _buildWidgetTF("اسم المؤسسة", Icons.apartment),
+                        _buildWidgetTF("اسم المؤسسة", Icons.apartment, false),
                         SizedBox(height: 10),
-                        _buildWidgetTF("رقم السجل التجاري", Icons.work),
+                        _buildWidgetTF("رقم السجل التجاري", Icons.work, false),
                         SizedBox(height: 10),
                         _buildSingleChoiceLocationTF(
                             "مكان تواجد المقر الرئيسي", Icons.location_on, 0),
@@ -603,13 +639,13 @@ class _SignUpPartnerState extends State<SignUpPartner> {
                         _buildSingleChoicePartnerTF(
                             "صفة الشراكة", Icons.work, 1),
                         SizedBox(height: 10),
-                        _buildWidgetTF("رقم الهاتف", Icons.phone),
+                        _buildWidgetTF("رقم الهاتف", Icons.phone, false),
                         SizedBox(height: 10),
-                        _buildWidgetTF("البريد الإلكتروني", Icons.email),
+                        _buildWidgetTF("البريد الإلكتروني", Icons.email, false),
                         SizedBox(height: 10),
-                        _buildWidgetTF("كلمة المرور", Icons.vpn_key),
+                        _buildWidgetTF("كلمة المرور", Icons.vpn_key, true),
                         SizedBox(height: 10),
-                        _buildWidgetTF("تأكيد كلمة المرور", Icons.vpn_key),
+                        _buildWidgetTF("تأكيد كلمة المرور", Icons.vpn_key, true),
                         SizedBox(height: 40),
                         _submitBtn(),
                         SizedBox(height: 20),

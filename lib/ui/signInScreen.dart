@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hemtak_app/HomePage/HomePageOfVolunteer.dart';
+import 'package:ndialog/ndialog.dart';
 
 class SignInVolunteer extends StatefulWidget {
   SignInVolunteer({Key key, this.title}) : super(key: key);
@@ -100,7 +101,40 @@ class _SignInVolunteerState extends State<SignInVolunteer> {
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: Colors.white)
-          ), ));
+          ),
+          onPressed: () => NAlertDialog(
+            title: Text(
+              "استعادة كلمة المرور",
+              textAlign: TextAlign.right,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            content: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: new BorderSide(color: Colors.redAccent),
+
+                ),
+                hintText: "ادخل عنوان البريد الاكتروني",
+                labelText: 'عنوان البريد الاكتروني',
+                prefixIcon: const Icon(
+                  Icons.email,
+                  color: Colors.redAccent,
+                ),
+              ),),
+            actions: [
+              FlatButton(
+                onPressed: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => SignInVolunteer())),
+                child: Text("موافق", style: TextStyle(color: Colors.redAccent)),
+              ),
+
+            ],
+            blur: 2,
+          ).show(context)
+        ),
+    );
   }
 
   Widget _submitBtn() {
@@ -249,3 +283,5 @@ class _SignInVolunteerState extends State<SignInVolunteer> {
         ));
   }
 }
+
+

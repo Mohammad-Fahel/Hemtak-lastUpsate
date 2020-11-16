@@ -4,7 +4,6 @@ import 'package:hemtak_app/ui/partnerScreens.dart';
 import 'package:hemtak_app/ui/signUpScreen.dart';
 import 'package:hemtak_app/ui/signInScreen.dart';
 
-import 'fillFormScreen2.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
